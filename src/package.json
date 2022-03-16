@@ -1,0 +1,12 @@
+{
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "build": "node .snow",
+    "dev": "node .snow --dev"
+  },
+  "devDependencies": {
+    "chokidar": "*",
+    "typescript": "*"
+  }
+}

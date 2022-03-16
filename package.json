@@ -1,0 +1,14 @@
+{
+  "name": "create-snow",
+  "version": "0.0.2",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "files": [
+    "index.js",
+    "src/*"
+  ],
+  "author": "Bertalan Tárnok",
+  "license": "MIT"
+}

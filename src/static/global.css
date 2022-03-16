@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: 900;
+}
+
+a {
+  color: #148aff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: 180ms background-color ease;
+  font-size: 20px;
+}
+
+a:hover {
+  background-color: #148aff24;
+}

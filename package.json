@@ -1,10 +1,14 @@
 {
   "name": "create-snow",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "",
   "main": "index.js",
   "bin": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bertalan-tarnok/create-snow"
+  },
   "files": [
     "index.js",
     "src/*"

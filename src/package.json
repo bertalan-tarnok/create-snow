@@ -6,7 +6,12 @@
     "dev": "node .snow --dev"
   },
   "devDependencies": {
-    "chokidar": "*",
-    "typescript": "*"
+    "@babel/cli": "*",
+    "@babel/core": "*",
+    "@babel/preset-typescript": "*",
+    "babel-plugin-add-import-extension": "*",
+    "babel-preset-minify": "*",
+    "babel-plugin-tsconfig-paths-module-resolver": "*",
+    "chokidar": "*"
   }
 }

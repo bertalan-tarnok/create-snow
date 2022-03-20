@@ -1,3 +1,3 @@
-import { page } from "../lib/page.js";
+import { page } from "@lib/page";
 
 page("index", ["about", "/about"]);

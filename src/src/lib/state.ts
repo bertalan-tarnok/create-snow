@@ -1,9 +1,7 @@
-type SubFn<T> = (v: T) => void;
-
 export let state = <T>(initial?: T) => {
   let value = initial;
 
-  let subs: SubFn<T>[] = [];
+  let subs: ((v: T) => void)[] = [];
 
   let set = (v: T) => {
     value = v;
@@ -13,7 +11,7 @@ export let state = <T>(initial?: T) => {
     }
   };
 
-  let sub = (f: SubFn<T>) => {
+  let sub = (f: (v: T) => void) => {
     subs.push(f);
   };
 

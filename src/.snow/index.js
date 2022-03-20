@@ -10,10 +10,10 @@ import {
 
 import { performance } from "perf_hooks";
 import { execSync, exec } from "child_process";
-
 import { createServer } from "http";
 
 import { watch } from "chokidar";
+import { transformSync } from "@babel/core";
 
 let dev = process.argv[2] === "--dev";
 
@@ -22,11 +22,11 @@ let out = dev ? "dev" : "out";
 let jsOutDir = "js";
 
 if (!dev) {
-  jsOutDir +=
-    "-" +
-    Math.floor(Math.random() * 36 ** 6)
-      .toString(36)
-      .padStart(6, "0");
+  jsOutDir += "-";
+  // for (let i = 0; i < 16; i++) {
+  //   jsOutDir += Math.floor(Math.random() * 16).toString(16);
+  // }
+  jsOutDir = Buffer.from(Date.now().toString(16), "hex").toString("base64url");
 }
 
 let build = () => {
@@ -97,11 +97,11 @@ let build = () => {
   console.log(`build - ${(performance.now() - start).toFixed(2)} ms`);
 };
 
-let tsc = `npx tsc --outDir ${out}/${jsOutDir}`;
+let babel = `npx babel src -d ${out}/${jsOutDir} --extensions ".ts"`;
 
 if (dev) {
-  tsc += " -w";
-  exec(tsc);
+  babel += " -w";
+  exec(babel);
 
   watch(["src", "static"], { ignoreInitial: true }).on("all", () => {
     build();
@@ -128,6 +128,8 @@ if (dev) {
   console.log("http://localhost:8080");
 } else {
   build();
-  execSync(tsc, { stdio: "inherit" });
+  process.env.BABEL_ENV = "prod";
+  let p = execSync(babel);
+  console.log("babel - " + p.toString().match(/(?<=\().*(?=\))/)[0]);
   console.log("build - ./out");
 }

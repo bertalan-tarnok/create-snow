@@ -4,7 +4,7 @@ import { execSync } from "child_process";
 import { readdirSync } from "fs";
 
 if (readdirSync("./").length > 0) {
-  console.error("Run this command in a non empty directory!");
+  console.error("Run this command in an empty directory!");
   process.exit(1);
 }
 

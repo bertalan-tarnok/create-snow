@@ -1,4 +1,4 @@
-import { h } from "./h.js";
+import { h } from "./h";
 
 export let page = (title: string, link: [string, string]) => {
   let h1 = h("h1", title);

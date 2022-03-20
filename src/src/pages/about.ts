@@ -1,5 +1,5 @@
-import { page } from "../lib/page.js";
-import { h } from "../lib/h.js";
+import { page } from "@lib/page";
+import { h } from "@lib/h";
 
 page("about", ["index", "/"]);
 

@@ -1,9 +1,11 @@
 {
+  "sourceMaps": "inline",
   "presets": ["@babel/preset-typescript"],
   "plugins": ["babel-plugin-add-import-extension", "tsconfig-paths-module-resolver"],
   "env": {
     "prod": {
-      "presets": ["@babel/preset-typescript", "minify"]
+      "presets": ["@babel/preset-typescript", "minify"],
+      "sourceMaps": false
     }
   }
 }

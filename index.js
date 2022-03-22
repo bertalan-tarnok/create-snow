@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import { execSync } from "child_process";
-import { readdirSync } from "fs";
+import { cpSync, readdirSync } from "fs";
 
 if (readdirSync("./").length > 0) {
   console.error("Run this command in an empty directory!");
@@ -14,7 +13,7 @@ let src =
     .replace(/index.js$/, "")
     .replace(/file:\/\/\//i, "") + "src";
 
-execSync(`cp -r ${src}/. .`, { stdio: "inherit" });
+cpSync(src, ".", { recursive: true });
 
 console.log(
   `

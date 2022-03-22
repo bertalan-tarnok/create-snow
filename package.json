@@ -1,6 +1,6 @@
 {
   "name": "create-snow",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "description": "",
   "main": "index.js",
@@ -14,5 +14,8 @@
     "src/*"
   ],
   "author": "Bertalan Tárnok",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.7.0"
+  }
 }

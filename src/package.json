@@ -13,5 +13,8 @@
     "babel-preset-minify": "*",
     "babel-plugin-tsconfig-paths-module-resolver": "*",
     "chokidar": "*"
+  },
+  "engines": {
+    "node": ">=16.7.0"
   }
 }

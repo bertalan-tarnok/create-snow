@@ -1,4 +1,5 @@
 import {
+  cpSync,
   existsSync,
   mkdirSync,
   readdirSync,
@@ -13,7 +14,6 @@ import { execSync, exec } from "child_process";
 import { createServer } from "http";
 
 import { watch } from "chokidar";
-import { transformSync } from "@babel/core";
 
 let dev = process.argv[2] === "--dev";
 
@@ -22,17 +22,17 @@ let out = dev ? "dev" : "out";
 let jsOutDir = "js";
 
 if (!dev) {
-  jsOutDir += "-";
-  // for (let i = 0; i < 16; i++) {
-  //   jsOutDir += Math.floor(Math.random() * 16).toString(16);
-  // }
-  jsOutDir = Buffer.from(Date.now().toString(16), "hex").toString("base64url");
+  jsOutDir += "-" + (Date.now() - Math.floor(statSync("src").birthtimeMs)).toString(16);
 }
 
 let build = () => {
   let start = performance.now();
 
   let root = readFileSync("src/root.html").toString();
+  root = root.replace(
+    /\[body\]/,
+    `<script src="/${jsOutDir}/root.js" type="module"></script>\n[body]`
+  );
 
   if (existsSync(out) && !dev) {
     rmSync(out, { recursive: true });
@@ -92,7 +92,7 @@ let build = () => {
 
   mkdirSync(`${out}/static`);
 
-  execSync(`cp static/* ${out}/static -r`);
+  cpSync("static", `${out}/static`, { recursive: true });
 
   console.log(`build - ${(performance.now() - start).toFixed(2)} ms`);
 };
